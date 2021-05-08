@@ -19,12 +19,16 @@ if(isset($_POST['submit'])){
 	$temp_name3 = $_FILES['menu_img3']['tmp_name'];
 
 	
-
-	move_uploaded_file($temp_name1,"menu_images/$menu_img1");
-	move_uploaded_file($temp_name2,"menu_images/$menu_img2");
-	move_uploaded_file($temp_name3,"menu_images/$menu_img3");
-
-	$insert_menu = "INSERT into menu(m_cat_id, cat_id, date, menu_title, menu_img1, menu_img2, menu_img3, menu_price, menu_keywords, menu_desc) values('$menu_cat', '$cat',NOW(), '$menu_title', '$menu_img1', '$menu_img2', '$menu_img3', '$menu_price', '$menu_keywords', '$menu_desc')";
+//--file should be checked first before uploading...
+move_uploaded_file($temp_name1,"menu_images/$menu_img1");
+move_uploaded_file($temp_name2,"menu_images/$menu_img2");
+move_uploaded_file($temp_name3,"menu_images/$menu_img3");
+//--file should be checked first before uploading...
+    
+    
+	$insert_menu = "INSERT into menu (
+                 m_cat_id, cat_id, date, menu_title, menu_img1, menu_img2, menu_img3, menu_price, menu_keywords, menu_desc) 
+                 values('$menu_cat', '$cat',NOW(), '$menu_title', '$menu_img1', '$menu_img2', '$menu_img3', '$menu_price', '$menu_keywords', '$menu_desc')";
 
 
 	$run_menu = mysqli_query($conn,$insert_menu);
