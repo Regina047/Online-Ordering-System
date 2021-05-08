@@ -71,47 +71,42 @@ function getPro(){
 		$pro_title = $row_menu['menu_title'];
 		$pro_price = $row_menu['menu_price'];
 		$pro_img1 = $row_menu['menu_img1'];
+?>
 
-		echo "
+<div class='col-md-4 col-sm-6 single'>
+    <div class='product'>
+        <a href='details.php?pro_id=$pro_id'><img class='img-responsive' src='admin/menu_images/<?php echo $pro_img1; ?>'> </a>
 
-		<div class = 'col-md-4 col-sm-6 single'>
-			<div class='product'>
-				<a href = 'details.php?pro_id=$pro_id'>
-					<img class = ' img-responsive' src = 'admin/menu_images/$pro_img1'>
-				</a>
+        <div class='text'>
+            <h3>
+                <a href='details.php?pro_id=$pro_id'>
+                    <?php echo $pro_title; ?>
+                </a>
 
-				<div class = 'text'>
-					<h3>
+            </h3>
+            <p class='price'>
+                ₱ <?php echo $pro_price; ?>
 
-						<a href = 'details.php?pro_id=$pro_id'>
-							$pro_title
-						</a>
+            </p>
 
-					</h3>
-					<p class = 'price'>
+            <p class='button'>
 
-						₱ $pro_price
+                <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+                    View Details
+                </a>
+                <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+                    <i class='fa fa-shopping-cart'></i> Add to Cart
+                </a>
 
-					</p>
+            </p>
 
-					<p class='button'>
+        </div>
 
-						<a class='btn btn-default' href = 'details.php?pro_id=$pro_id'>
-							View Details
-						</a>
-						<a class='btn btn-primary' href = 'details.php?pro_id=$pro_id'>
-							<i class='fa fa-shopping-cart'></i> Add to Cart
-						</a>
+    </div>
 
-					</p>
+</div>
 
-				</div>
-
-			</div>	
-
-		</div>		
-
-		";
+<?php 
 	}
 }
 
@@ -432,4 +427,3 @@ function togglePopup() {
 	document.getElementById("popup-1").classList.toggle(active);
 
 }
-
