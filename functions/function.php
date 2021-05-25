@@ -21,6 +21,35 @@ function getRealIpUser(){
 	}
 }
 
+function checkImage($img_file, $targetdir, $targetimagename){
+
+	$stat = array(
+
+		'fileSize0k' => '',
+		'fileExists' => '',
+		'fileType' => ''
+	);
+
+
+	$tmp_filename = $img_file['tmp_name'];
+	$file_size = $img_file['size'];
+	$img_size = getimagesize($img_file['tmp_name']);
+	$acceptable_files = array('image/jpeg','image/png','image/jpg');
+
+	if(! in_array(img_mime, $acceptable_files)){
+		$stat['fileType'] = "This file is not an image.[jpg / png] only";
+	}
+
+	if($img_size === flase || $file_size > 500000){
+		$stat['fileSize0k'] = "image size is not acceptable";
+	}
+
+	if(file_exist($targetdir."/".$targetimagename)){
+		$stat['fileExists'] = "File Esist. Change the Item Name";
+	}
+
+	return $stat;
+}
 
 
 function add_cart(){
@@ -35,7 +64,7 @@ function add_cart(){
 
 		$product_qty = $_POST['product_qty'];
 
-		$check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
+		$check_product = "SELECT * from cart where ip_add='$ip_add' AND p_id='$p_id'";
 
 		$run_check = mysqli_query($db,$check_product);
 
@@ -71,42 +100,47 @@ function getPro(){
 		$pro_title = $row_menu['menu_title'];
 		$pro_price = $row_menu['menu_price'];
 		$pro_img1 = $row_menu['menu_img1'];
-?>
 
-<div class='col-md-4 col-sm-6 single'>
-    <div class='product'>
-        <a href='details.php?pro_id=$pro_id'><img class='img-responsive' src='admin/menu_images/<?php echo $pro_img1; ?>'> </a>
+		echo "
 
-        <div class='text'>
-            <h3>
-                <a href='details.php?pro_id=$pro_id'>
-                    <?php echo $pro_title; ?>
-                </a>
+		<div class = 'col-md-4 col-sm-6 single'>
+			<div class='product'>
+				<a href = 'details.php?pro_id=$pro_id'>
+					<img class = ' img-responsive' src = 'admin/menu_images/$pro_img1'>
+				</a>
 
-            </h3>
-            <p class='price'>
-                ₱ <?php echo $pro_price; ?>
+				<div class = 'text'>
+					<h3>
 
-            </p>
+						<a href = 'details.php?pro_id=$pro_id'>
+							$pro_title
+						</a>
 
-            <p class='button'>
+					</h3>
+					<p class = 'price'>
 
-                <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
-                    View Details
-                </a>
-                <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
-                    <i class='fa fa-shopping-cart'></i> Add to Cart
-                </a>
+						₱ $pro_price
 
-            </p>
+					</p>
 
-        </div>
+					<p class='button'>
 
-    </div>
+						<a class='btn btn-default' href = 'details.php?pro_id=$pro_id'>
+							View Details
+						</a>
+						<a class='btn btn-primary' href = 'details.php?pro_id=$pro_id'>
+							<i class='fa fa-shopping-cart'></i> Add to Cart
+						</a>
 
-</div>
+					</p>
 
-<?php 
+				</div>
+
+			</div>	
+
+		</div>		
+
+		";
 	}
 }
 
@@ -140,33 +174,6 @@ function getPCats(){
 
 /// Finish getPCats Function
 
-/// Begin getCats Function
-
-function getCats(){
-
-	global $db;
-
-	$get_cats = "SELECT * from categories";
-	$run_cats = mysqli_query($db,$get_cats);
-
-
-	while($row_cats=mysqli_fetch_array($run_cats)){
-
-		$cat_id = $row_cats['cat_id'];
-		$cat_title = $row_cats['cat_title'];
-
-		echo "
-
-			<li>
-				<a href='shop.php?cat=$cat_id'> $cat_title </a>
-			</li>
-
-		";
-	}
-}
-
-
-/// Finish getCats Function
 
 /// Begin getcatpro Function
 
@@ -212,6 +219,7 @@ function getcatpro(){
 
 			$pro_title = $row_menu['menu_title'];
 			$pro_price = $row_menu['menu_price'];
+			$pro_desc = $row_menu['menu_desc'];
 			$pro_img1 = $row_menu['menu_img1'];
 
 
@@ -267,98 +275,7 @@ function getcatpro(){
 	}
 /// Finish getpcatpro Function
 
-	/// Begin getmcatpro function///
-
-	function getmcatpro(){
-
-
-	global $db;
-
-	if(isset($_GET['cat'])){
-		$cat_id = $_GET['cat'];
-
-		$get_cat = "SELECT * from categories where cat_id='$cat_id'";
-		$run_cat = mysqli_query($db ,$get_cat);
-
-		$row_cat = mysqli_fetch_array($run_cat);
-		$cat_title = $row_cat['cat_title'];
-		$cat_desc = $row_cat['cat_desc'];
-
-		$get_menu = "SELECT * from menu where cat_id='$cat_id' LIMIT 0,6";
-		$run_menu = mysqli_query($db,$get_menu);
-
-		$count = mysqli_num_rows($run_menu);
-		if($count==0){
-			echo "
-				<div class='box'>
-					<h1> No Product Found In This Category </h1>
-				</div>
-			";
-
-		}else{
-
-			echo "
-				<div class='box'>
-					<h1> $cat_title </h1>
-					<p> $cat_desc </p>
-				</div>
-
-			";
-
-	}
-	while($row_menu=mysqli_fetch_array($run_menu)){
-
-			$pro_id = $row_menu['menu_id'];
-
-			$pro_title = $row_menu['menu_title'];
-			$pro_price = $row_menu['menu_price'];
-			$pro_img1 = $row_menu['menu_img1'];
-
-			echo "
-		<div class = 'col-md-4 col-sm-6 center-responsive'>
-			<div class='product'>
-					<a href = 'details.php?pro_id=$pro_id'>
-						<img class ='img-responsive' src = 'admin/menu_images/$pro_img1'>
-					</a>
-
-				<div class = 'text'>
-					<h3>
-
-						<a href = 'details.php?pro_id=$pro_id'>
-							$pro_title
-						</a>
-
-					</h3>
-					<p class = 'price'>
-
-						₱ $pro_price
-
-					</p>
-
-					<p class='button'>
-
-						<a class='btn btn-default' href = 'details.php?pro_id=$pro_id'>
-							View Details
-						</a>
-						<a class='btn btn-primary' href = 'details.php?pro_id=$pro_id'>
-							<i class='fa fa-shopping-cart'></i> Add to Cart
-						</a>
-
-					</p>
-
-				</div>
-
-			</div>	
-
-		</div>
-
-
-			";
-
-		}
-	}
-}
-/// finish getmcatpro function///
+	
 
 /// Begin item function///
 
@@ -368,7 +285,7 @@ function items(){
 
 	$ip_add = getRealIpUser();
 
-	$get_items = "select * from cart where ip_add='$ip_add'";
+	$get_items = "SELECT * from cart where ip_add='$ip_add'";
 
 	$run_items = mysqli_query($db,$get_items);
 
@@ -391,7 +308,7 @@ function total_price(){
 
 	$total = 0;
 
-	$select_cart = "select * from cart where ip_add='$ip_add'";
+	$select_cart = "SELECT * from cart where ip_add='$ip_add'";
 
 	$run_cart = mysqli_query($db,$select_cart);
 
@@ -401,7 +318,7 @@ function total_price(){
 
 		$pro_qty =  $record['qty'];
 
-		$get_price = "select * from menu where menu_id='$pro_id'";
+		$get_price = "SELECT * from menu where menu_id='$pro_id'";
 
 		$run_price = mysqli_query($db,$get_price);
 
@@ -427,3 +344,8 @@ function togglePopup() {
 	document.getElementById("popup-1").classList.toggle(active);
 
 }
+
+
+
+
+
