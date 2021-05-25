@@ -33,7 +33,7 @@ include("includes/db_conn.php");
                    <?php
 
 
-                   $get_slides = "select * from slider LIMIT 0,1";
+                   $get_slides = "SELECT * from slider LIMIT 0,1";
                    $run_slides = mysqli_query($conn,$get_slides);
 
                    while($row_slides=mysqli_fetch_array($run_slides)){
@@ -51,7 +51,7 @@ include("includes/db_conn.php");
                       ";
                    }
 
-                   $get_slides = "select * from slider LIMIT 1,3";
+                   $get_slides = "SELECT * from slider LIMIT 1,3";
                    $run_slides = mysqli_query($conn,$get_slides);
 
                    while($row_slides=mysqli_fetch_array($run_slides)){
