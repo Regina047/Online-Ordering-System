@@ -1,226 +1,207 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Menu</title>
+<?php
 
+$active='Shop';
+include("includes/db_conn.php");
+
+include ("header.php"); 
+
+ ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
 	<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<title>Iconic Plate</title>
-		<link rel="stylesheet" href="styles/style.css">
-		<link rel="stylesheet" href="styles/bootstrap-337.min.css">
-		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iconicplate store || PHP</title>
+	<link rel="stylesheet"  href="styles/bootstrap-337.min.css">
+	<link rel="stylesheet"  href="styles/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div><?php require "header.php"?></div>
+	
+	
 
-
-<div class="content">
-	<div class="container">
-		<div class="col-md-12">
-			<ul class="breadcrumb">
-				<li>
-					<a href="index.php">Home</a>
-				</li>
-				<li>
-					Menu
-				</li>
-			</ul>
-		</div>
-
-		<div class="col-md-3">
-			<?php require "sidebar.php"?>				
-		</div>
-
-		<div class="col-md-9">
-			<div class="box">
-				<h1>Menu</h1>
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-				</p>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-4 col-sm-6 center-responsive">
+	<div id="content">
+		<div class="container">
+			<div class="col-md-12">
+				<ul class="breadcrumb">
+					<li>
+						<a href="index.php">Home</a>
+					</li>
+					<li>
+						Menu
+					</li>
 					
-					<div class="product">
-					<a href="details.php">
-					<img class="img-responsive" src="img/food/nilagang bulalo.jpg" alt="Bulalo">
-					</a>				
-					<div class="text">
-						<h3>
-							<a href="details.php">
-								Nilagang Bulalo
-							</a>
-						</h3>
-						<p class="price">Php200.00</p>
-						<p class="price">Beef shanks and bone marrow simmered slowly until tender with corn on the cob and fresh green vegetables.</p>
-						<p class="button">
-							<a href="details.php" class="btn btn-default">View Details</a>
-							<a href="details.php" class="btn btn-primary">
-								<i class="fa fa-shopping-cart">
-									Add to Cart
-								</i>
-							</a>
-						</p>
-					</div>	
-					</div>
-				</div>
+				</ul>
+			</div>
 
-				<div class="col-md-4 col-sm-6 center-responsive">
-						
-						<div class="product">
-						<a href="details.php">
-						<img class="img-responsive" src="img/bulalo1.jpg" alt="Bulalo">
-						</a>				
-						<div class="text">
-							<h3>
-								<a href="details.php">
-									Bulalo
-								</a>
-							</h3>
-							<p class="price">Php150.00</p>
-							<p class="button">
-								<a href="details.php" class="btn btn-default">View Details</a>
-								<a href="details.php" class="btn btn-primary">
-									<i class="fa fa-shopping-cart">
-										Add to Cart
-									</i>
-								</a>
-							</p>
-						</div>	
-					</div>
-				</div>
-
-				<div class="col-md-4 col-sm-6 center-responsive">
-						
-						<div class="product">
-						<a href="details.php">
-						<img class="img-responsive" src="img/bulalo1.jpg" alt="Bulalo">
-						</a>				
-						<div class="text">
-							<h3>
-								<a href="details.php">
-									Bulalo
-								</a>
-							</h3>
-							<p class="price">Php150.00</p>
-							<p class="button">
-								<a href="details.php" class="btn btn-default">View Details</a>
-								<a href="details.php" class="btn btn-primary">
-									<i class="fa fa-shopping-cart">
-										Add to Cart
-									</i>
-								</a>
-							</p>
-						</div>	
-					</div>
-				</div>
-
-				<div class="col-md-4 col-sm-6 center-responsive">
-						
-						<div class="product">
-						<a href="details.php">
-						<img class="img-responsive" src="img/bulalo1.jpg" alt="Bulalo">
-						</a>				
-						<div class="text">
-							<h3>
-								<a href="details.php">
-									Bulalo
-								</a>
-							</h3>
-							<p class="price">Php150.00</p>
-							<p class="button">
-								<a href="details.php" class="btn btn-default">View Details</a>
-								<a href="details.php" class="btn btn-primary">
-									<i class="fa fa-shopping-cart">
-										Add to Cart
-									</i>
-								</a>
-							</p>
-						</div>	
-					</div>
-				</div>
-
-				<div class="col-md-4 col-sm-6 center-responsive">
-						
-						<div class="product">
-						<a href="details.php">
-						<img class="img-responsive" src="img/bulalo1.jpg" alt="Bulalo">
-						</a>				
-						<div class="text">
-							<h3>
-								<a href="details.php">
-									Bulalo
-								</a>
-							</h3>
-							<p class="price">Php150.00</p>
-							<p class="button">
-								<a href="details.php" class="btn btn-default">View Details</a>
-								<a href="details.php" class="btn btn-primary">
-									<i class="fa fa-shopping-cart">
-										Add to Cart
-									</i>
-								</a>
-							</p>
-						</div>	
-					</div>
-				</div>
-
-				<div class="col-md-4 col-sm-6 center-responsive">
-						
-						<div class="product">
-						<a href="details.php">
-						<img class="img-responsive" src="img/bulalo1.jpg" alt="Bulalo">
-						</a>				
-						<div class="text">
-							<h3>
-								<a href="details.php">
-									Bulalo
-								</a>
-							</h3>
-							<p class="price">Php150.00</p>
-							<p class="button">
-								<a href="details.php" class="btn btn-default">View Details</a>
-								<a href="details.php" class="btn btn-primary">
-									<i class="fa fa-shopping-cart">
-										Add to Cart
-									</i>
-								</a>
-							</p>
-						</div>	
-					</div>
-				</div>
-
+			<div class="col-md-3">
+				
+				<?php include ("sidebar.php"); ?>
 
 			</div>
+
+			<div class="col-md-9"> <!--- col-md-9 begin--->
+
+				<?php
+
+				if(!isset($_GET['m_cat '])) {
+
+					if(!isset($_GET['cat'])){ 
+
+					// echo "
+					// <div class='box'> <!--- box begin--->
+					// 	<h1>Menu</h1>
+					// 	<p> The meals your looking for.</p>
+					// </div> <!--- box finish--->
+					// ";
+				}
+
+				}
+
+				?>
+				<div class="row">
+				<?php
+
+				if(!isset($_GET['m_cat'])){
+					if(!isset($_GET['cat'])){
+
+						$per_page=6;
+
+						if(isset($_GET['page'])){
+							$page = $_GET['page'];
+
+							}else{
+
+								$page=1;
+							}
+
+
+							$start_from = ($page-1) * $per_page;
+							$get_menu = "SELECT * from menu order by 1 DESC LIMIT $start_from,$per_page";
+							$run_menu = mysqli_query($conn,$get_menu);
+
+							while ($row_menu=mysqli_fetch_array($run_menu )) {
+								$pro_id = $row_menu['menu_id'];
+
+								$pro_title = $row_menu['menu_title'];
+								$pro_price = $row_menu['menu_price'];
+								$pro_img1 = $row_menu['menu_img1'];
+
+								echo "
+
+									<div class='col-md-4 col-sm-6 center-responsive'>
+										<div class='product'>
+
+											<a href='details.php?pro_id=$pro_id'>
+
+												<img class='img-responsive' src='admin/menu_images/$pro_img1'>
+
+											 </a>
+											 <div class='text'>
+											 	<h3>
+											 		<a href='details.php?pro_id=$pro_id'>$pro_title</a>
+											 	</h3>
+											 	<p class='price'>
+
+											 		₱ $pro_price
+
+											 	</p>
+
+											 	<p class='button'>
+
+											 		<a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+											 				View Details
+											 		</a>
+											 		<a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+											 				<i class='fa fa-shopping-cart'></i>Add to Cart
+											 		</a>
+											 </div>
+
+										</div>
+
+
+									</div>
+
+
+
+
+
+								";
+
+							}
+
+
+						
+				?>
+
+			</div>
+			<center>
+
+
+			<ul class="pagination">
+
+				<?php
+
+				$query = "SELECT * from menu";
+
+				$result = mysqli_query($conn,$query);
+				$total_records = mysqli_num_rows($result);
+				$total_pages = ceil($total_records / $per_page);
+
+					echo "
+						<li>
+							<a href='shop.php?page=1'> ".'First Page'." </a>
+						</li>
+					";
+
+					for($i=1; $i<=$total_pages; $i++){
+
+						echo "
+						<li>
+							<a href='shop.php?page=".$i."'> ".$i." </a>
+						</li>
+					";
+
+					};
+
+
+
+					echo "
+						<li>
+							<a href='shop.php?page=$total_pages'> ".'Last Page'." </a>
+						</li>
+					";
+
+					}
+				}
+
+				?>
 				
+			</ul>
+		</center>
+	
+
+						<?php  
+
+						getcatpro(); 
+					
+
+
+						?>
+
+					
+
+			</div> <!--- col-md-9 finish--->
+
 		</div>
-
 	</div>
-			
-</div>
 
+	<?php include ("footer.php"); ?>
 
-<center>
-	<ul class="pagination">
-		<li><a href="#">First Page</a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">Last Page</a></li>
-		
-	</ul>
-</center>
-
-
-
-<div><?php require "footer.php"?></div>
-
-
-<script src="js/jquery-331.min.js"></script>
-<script src="js/bootstrap-337.min.js"></script>
+	
+    <script src="js/jquery-331.min.js"></script>
+    <script src="js/bootstrap-337.min.js"></script>
 </body>
 </html>
+
