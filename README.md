@@ -13,7 +13,7 @@ the database and retrieved in pretty much real time. This allows restaurant empl
 This documentation will help you get started with participating in this open-source project. To participate in the project please fork by pressing the fork button 
 and close the repository with this command:
 
-	https://
+	https://github.com/Regina047/Online-Ordering-System
 
 ###Prerequisites
 Built with
